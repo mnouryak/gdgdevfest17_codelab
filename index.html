@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Jscodelab!</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
+                <div>
+                    <img src="img/logoo.jpg" alt="" />
+                </div>
+                <div>
+                    <img src="img/favicon.ico" alt="" />                    
+                </div><hr>
+                <div class="logo-margin-avatar">
+                    
+                </div><hr>
+            </div>
+            <div class="col-md-6 col-md-offset-4  text-center">
+                <div id="login-container" class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Svp,remplissez le formulaire</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="" id="myForm">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="pwd" id="pwd" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Envoyer" class="btn btn-outline btn-default btn-lg btn-block"/>
+                                <hr>
+                                <label>
+                                    <input name="remember" type="checkbox" value="Remember Me"> Se souvenir
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="messages-container" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Vos messages</h3><hr>
+                        <div id="msg" class="pannel pannel-default" >
+                            <!-- <img src="{{user.avatar}}" alt="">
+                            <p><strong>{{user.email}}</strong></p>
+                            <p>{{message}}</p>
+                            <span class="date">{{h}}:{{min}}</span> -->
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form action="" id="msgForm">
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <input type="text" class="form-control" id="message" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Envoyer" class="btn btn-outline btn-default btn-lg btn-block"/>
+                                <hr>
+                                <label>
+                                    <input name="remember" type="checkbox" value="Remember Me"> Se souvenir
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="http://localhost:2000/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+    <script src="js/client.js"></script>
+
+</body>
+
+</html>
