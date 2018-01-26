@@ -3,7 +3,11 @@
     $('#messages-container').hide(); 
 
     var msg = $('#msg').html();
+<<<<<<< HEAD
     $('#msg').hide(); 
+=======
+   // $('#msg').remove(); 
+>>>>>>> isaac_users
 
     $('#myForm').submit(function(event){
         event.preventDefault();
