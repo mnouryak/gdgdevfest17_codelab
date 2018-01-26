@@ -3,7 +3,7 @@
     $('#messages-container').hide(); 
 
     var msg = $('#msg').html();
-    $('#msg').remove(); 
+   // $('#msg').remove(); 
 
     $('#myForm').submit(function(event){
         event.preventDefault();
@@ -42,7 +42,7 @@
      */
 
     socket.on('newUser',function(user){
-        $('.logo-margin-avatar').append('<img src="'+user.avatar+'" id="'+user.id +'"><br><br>');
+        $('.logo-margin-avatar').append('<img src="'+user.avatar+'" id="'+user.id +'"><strong>'+ user.email+'</strong><br><br>');
     })
 
     socket.on('disconnectUser',function(user){
