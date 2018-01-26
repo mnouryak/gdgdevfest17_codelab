@@ -1,6 +1,6 @@
 var http = require('http'),
     MD5 = require('MD5'),
-    users = {};
+    users = {};;
 
 httpServer = http.createServer(function (res, req) {
     console.log('un utilisateur vient de se connecter');
