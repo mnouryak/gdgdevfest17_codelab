@@ -1,43 +1,43 @@
-var http = require('http');
-var MD5 = require('MD5');
+var http = require('http'),
+    MD5 = require('MD5'),
+    users = {};;
 
-httpServer = http.createServer(function(res,req){
+httpServer = http.createServer(function (res, req) {
     console.log('un utilisateur vient de se connecter');
 });
-
-httpServer.listen(2000);
-
 var io = require('socket.io').listen(httpServer);
-var users = {};
+httpServer.listen(2000, function () {
+    console.log('I am running on 2000');
+});
 
-io.sockets.on('connection',function(socket){
+
+
+io.sockets.on('connection', function (socket) {
     var me = false;
     console.log('bienvenue!');
 
-    for(var u in users){
-        socket.emit('newUser',users[u]);
+    for (var u in users) {
+        socket.emit('newUser', users[u]);
     }
 
     /**
      * on recoit un message
      */
-    socket.on('newMsg',function(message){
-         message.user = me;
-         date = new Date();
-         message.h = date.getHours();
-         message.m = date.getMinutes();
-         io.sockets.emit('newMsg',message);
+    socket.on('newMsg', function (message) {
+        message.user = me;
+        date = new Date();
+        message.h = date.getHours();
+        message.m = date.getMinutes();
+        io.sockets.emit('newMsg', message);
     })
 
     /**
      * un utilisateur se connecte
      */
-
-
-    socket.on('login', function(user){
+    socket.on('login', function (user) {
         me = user;
-        me.id = user.email.replace('@','-').replace('.','-');
-        me.avatar = 'https://gravatar.com/avatar/'+ MD5(user.email)+'?s=50';
+        me.id = user.email.replace('@', '-').replace('.', '-');
+        me.avatar = 'https://gravatar.com/avatar/' + MD5(user.email) + '?s=50';
         socket.emit('logged');
         users[me.id] = me;
         io.sockets.emit('newUser', me);
@@ -47,12 +47,12 @@ io.sockets.on('connection',function(socket){
      * un utilisateur se deconnecte
      */
 
-    socket.on('disconnect',function(){
-        if(!me){
+    socket.on('disconnect', function () {
+        if (!me) {
             return false;
-            
+
         }
         delete users[me.id];
-        io.sockets.emit('disconnectUser',me); 
+        io.sockets.emit('disconnectUser', me);
     })
 });

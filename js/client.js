@@ -3,7 +3,7 @@
     $('#messages-container').hide(); 
 
     var msg = $('#msg').html();
-    $('#msg').remove(); 
+    $('#msg').hide(); 
 
     $('#myForm').submit(function(event){
         event.preventDefault();
@@ -33,7 +33,8 @@
 
     socket.on('newMsg',function(message){
         console.log(message.message);
-        $('#messages').append('<div>'+message.message+'</div>');
+        $('#msg').show(); 
+        $('#msg').append('<div>'+message.message+'</div>');
     })
 
 
