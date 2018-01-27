@@ -34,7 +34,9 @@
     socket.on('newMsg',function(message){
         console.log(message.message);
         $('#msg').show(); 
-        $('#msg').append('<div>'+message.message+'</div>');
+        $('#msg').append('<div class="row pannel"><div class="col-md-6 col-md-offset-4"><img src="'
+        +message.user.avatar+'"><strong>'+message.user.email+'</strong></div><div class="col-md-4 col-md-offset-4" style=" max-width: 100%;"><span>'
+        +message.message+'</span></div></div><br><hr>');
     })
 
 
@@ -43,7 +45,7 @@
      */
 
     socket.on('newUser',function(user){
-        $('.logo-margin-avatar').append('<img src="'+user.avatar+'" id="'+user.id +'"><strong>'+ user.email+'</strong><br><br>');
+        $('.logo-margin-avatar').append('<div  id="'+user.id +'" class="row"><img src="'+user.avatar+'"><strong>'+ user.email+'</strong></div><br><br>');
     })
 
     socket.on('disconnectUser',function(user){

@@ -1,11 +1,15 @@
 var http = require('http'),
-    MD5 = require('MD5'),
-    users = {};
+    MD5 = require('MD5');
 
 httpServer = http.createServer(function (res, req) {
     console.log('un utilisateur vient de se connecter');
 });
+
 var io = require('socket.io').listen(httpServer);
+ var users = {};
+var messages = [];
+var history = 3;
+
 httpServer.listen(2000, function () {
     console.log('I am running on 2000');
 });
@@ -28,8 +32,16 @@ io.sockets.on('connection', function (socket) {
         date = new Date();
         message.h = date.getHours();
         message.m = date.getMinutes();
+        messages.push(message);
+        if(messages.length>history){
+            messages.shift();
+        }
         io.sockets.emit('newMsg', message);
     })
+
+    for(var m in messages){
+        socket.emit('newMsg', messages[m]);
+    }
 
     /**
      * un utilisateur se connecte
